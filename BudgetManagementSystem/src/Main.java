@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.sql.*;
 
 public class Main {
-    public static void main (String args[ ]) {
+    public static void main (String args[]) {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -25,42 +25,9 @@ public class Main {
 
             switch (input) {
                 case "add":
-                    /* Title */
-                    System.out.println("Great. What book do you want to add to your collection?");
-                    String title = scanner.nextLine().trim();
-                    while (title.isEmpty()) {
-                        System.out.println("You must enter a title!");
-                        title = scanner.nextLine().trim();
-                    }
 
-//                    /* Author */
-//                    System.out.println("Who's the author(s)?");
-//                    String author = scanner.nextLine().trim();
-//                    while (author.isEmpty()) {
-//                        System.out.println("You must enter at least one author!");
-//                        author = scanner.nextLine().trim();
-//                    }
-//
-//                    /* Cost */
-//                    double cost = 0;
-//                    while (true) {
-//                        try {
-//                            System.out.println("How much did it cost?");
-//                            scanner = new Scanner(System.in);
-//                            cost = scanner.nextDouble();
-//                            break;
-//                        } catch (InputMismatchException e) {
-//                            System.out.println("Please enter a number!");
-//                        }
-//                    }
-//
-//                    System.out.println(cost);
-//
-//                    System.out.println(title);
-//                    System.out.println(author);
-//                    Book book = new Book(title, author, cost);
-                    Book book = new Book(title);
-
+                    Book book1 = new Book();
+                    Book book2 = new Book();
                     input_num = 0;
                     break;
                 case "update":
