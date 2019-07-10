@@ -1,4 +1,3 @@
-import java.sql.*;
 import java.util.InputMismatchException;
 //import java.util.Random;
 import java.util.Scanner;
@@ -8,19 +7,20 @@ public class Book {
     // Instances
     private String title;
     private String author;
+    private int bookID;
     private double cost;
-    private static int bookID = 0;
+    private static int idNum = 0;
 
     // Constructor method
     public Book() {
         this.title = setTitle();
         this.author = setAuthor();
         this.cost = setCost();
-
-        bookID++;
+        this.bookID = setBookID();
 
         System.out.println("Your book is named " + this.title + ", written by " + this.author
-        + " and it costed $" + this.cost + ". \n The book's ID is: " + bookID);
+        + " and it costed $" + this.cost + ". \n The book's ID is: " + this.bookID);
+
 
     }
 
@@ -85,9 +85,9 @@ public class Book {
     }
 
     public int setBookID() {
+        idNum++;
+        return idNum;
 
-
-        return 0;
     }
 
     public String showBookInfo() {

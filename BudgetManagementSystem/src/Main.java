@@ -8,6 +8,8 @@ import java.sql.*;
 public class Main {
     public static void main (String args[]) {
 
+        User user1 = new User();
+        System.out.println("Welcome, " + user1.getFirstName());
         Scanner scanner = new Scanner(System.in);
 
         boolean exit = true;
@@ -25,9 +27,9 @@ public class Main {
 
             switch (input) {
                 case "add":
-
+// TODO: how to add the book to the user?
                     Book book1 = new Book();
-                    Book book2 = new Book();
+                    user1.addBook(book1);
                     input_num = 0;
                     break;
                 case "update":
