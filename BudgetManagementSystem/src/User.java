@@ -31,6 +31,10 @@ public class User {
         return name;
     }
 
+    public String getLastName() {
+        return this.lastName;
+    }
+
     public String setLastName() {
         System.out.print("Enter your last name:");
         Scanner scanner = new Scanner(System.in);
@@ -44,15 +48,33 @@ public class User {
 
     public void addBook(Book book) {
         this.books.add(book);
-        System.out.println("After adding the new book: ");
 
-        for (int i=0; i < books.size(); i++) {
-            System.out.println("Book: " + books.get(i).getTitle());
-        }
     }
 
     public int setUserID() {
         idNum++;
         return idNum;
+    }
+
+    public void removeBook(String title) {
+        Book toDelete = null;
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().equals(title)) {
+                toDelete = books.remove(i);
+            }
+
+        }
+        if (toDelete == null) {
+            System.out.println(title + " could not be found and therefore could not " +
+                    "be deleted.");
+        }
+    }
+
+    public void userInfo() {
+        System.out.println("Name: " + getFirstName() + " " + getLastName());
+        System.out.println("The books " + getFirstName() + "'s library include: ");
+        for (int i=0; i < books.size(); i++) {
+            System.out.println(" - " + books.get(i).getTitle() + ", by " + books.get(i).getAuthor());
+        }
     }
 }

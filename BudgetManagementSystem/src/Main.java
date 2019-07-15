@@ -14,35 +14,40 @@ public class Main {
 
         boolean exit = true;
         int input_num;
+
         System.out.println("Input 'add' if you would like a new book that you read.");
         System.out.println("Input 'update' if you would like to update an existing book you've read.");
         System.out.println("Input 'display' to see all books saved.");
         System.out.println("Input 'delete' to delete a book.");
         System.out.println("Input 'exit' if you would like to exit the application.");
 
-        while (exit){
+        while (exit) {
+            System.out.println("Enter input: ");
 
             String input = scanner.nextLine().trim();
-            exit = false;
+//            exit = false;
 
             switch (input) {
                 case "add":
-// TODO: how to add the book to the user?
-                    Book book1 = new Book();
-                    user1.addBook(book1);
-                    input_num = 0;
+                    Book newBook = new Book();
+                    user1.addBook(newBook);
                     break;
                 case "update":
-                    input_num = 1;
                     break;
                 case "display":
-                    input_num = 2;
+                    user1.userInfo();
                     break;
                 case "delete":
-                    input_num = 3;
+                    System.out.println("What is the title of the book you want to remove?");
+                    String title = scanner.nextLine().trim();
+//                    System.out.println("Who is the author of the book?");
+//                    String author = scanner.nextLine().trim();
+
+                    user1.removeBook(title);
+                    user1.userInfo();
                     break;
                 case "exit":
-                    input_num = 4;
+                    exit = false;
                     break;
                 default:
                     exit = true;
