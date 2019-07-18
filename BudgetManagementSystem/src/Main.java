@@ -8,8 +8,38 @@ import java.sql.*;
 public class Main {
     public static void main (String args[]) {
 
+//        // Database connection
+//        Connection c = null;
+//
+//        try {
+//            Class.forName("org.sqlite.JDBC");
+//            c = DriverManager.getConnection("jdbc:sqlite:books.db");
+//
+//        } catch ( Exception e ) {
+//            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+//            System.exit(1);
+//        }
+//
+//        // Create BOOKS table if not already exists
+//        try {
+//            Statement stmt = c.createStatement();
+//            String sql_create_table = "CREATE TABLE BOOKS(" +
+//                    "ISBN INT PRIMARY KEY NOT NULL, " +
+//                    "TITLE TEXT NOT NULL, " +
+//                    "AUTHOR TEXT" +
+//                    ")";
+//            stmt.executeUpdate((sql_create_table));
+//            stmt.close();
+//            c.close();
+//
+//        } catch (SQLException e) {
+//            System.out.println("Table BOOKS already exists.");
+//        }
+
+        SQLiteConnection.connectDB();
+        SQLiteConnection.createDB();
         User user1 = new User();
-        System.out.println("Welcome, " + user1.getFirstName());
+        System.out.println("Welcome, " + user1.getUserName());
         Scanner scanner = new Scanner(System.in);
 
         boolean exit = true;
@@ -64,35 +94,6 @@ public class Main {
 
 
 
-//        // Database connection
-//        Connection c = null;
-//
-//        try {
-//            Class.forName("org.sqlite.JDBC");
-//            c = DriverManager.getConnection("jdbc:sqlite:books.db");
-//
-//
-//        } catch ( Exception e ) {
-//            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-//            System.exit(1);
-//        }
-//
-//        // Successfully opened database
-//        try {
-//            Statement stmt = c.createStatement();
-//            String sql_create_table = "CREATE TABLE BOOKS(" +
-//                    "ISBN INT PRIMARY KEY NOT NULL, " +
-//                    "TITLE TEXT NOT NULL, " +
-//                    "AUTHOR TEXT" +
-//                    ")";
-//            stmt.executeUpdate((sql_create_table));
-//            stmt.close();
-//            c.close();
-//
-//        } catch (SQLException e) {
-//            System.out.println("Table BOOKS already exists.");
-//        }
-//
 //        try {
 //            Statement stmt = c.createStatement();
 //            String sql_insert_book = "SELECT COUNT(*) FROM BOOKS WHERE TITLE='harry' AND AUTHOR='rowling'";
