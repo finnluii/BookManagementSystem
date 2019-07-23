@@ -8,7 +8,7 @@ public class User {
     private String userName;
     private int userID;
     private static int idNum = 0;
-    private ArrayList<Book> books = new ArrayList<Book>();
+//    private ArrayList<Book> books = new ArrayList<Book>();
 
 
     // Constructor
@@ -17,7 +17,7 @@ public class User {
 //        this.lastName = setLastName();
         this.userName = setUserName();
         this.userID = setUserID();
-        System.out.println(books);
+//        System.out.println(books);
     }
 //    public String getFirstName() {
 //        return this.firstName;
@@ -63,7 +63,8 @@ public class User {
     }
 
     public void addBook(Book book) {
-        this.books.add(book);
+//        this.books.add(book);
+        SQLiteConnection.insert(book.getISBN(), book.getTitle(), book.getAuthor(), book.getCost());
 
     }
 
@@ -72,25 +73,29 @@ public class User {
         return idNum;
     }
 
-    public void removeBook(String title) {
-        Book toDelete = null;
-        for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getTitle().toLowerCase().equals(title.toLowerCase())) {
-                toDelete = books.remove(i);
-            }
+    public void deleteBook(String isbn) {
+        SQLiteConnection.delete(isbn);
 
-        }
-        if (toDelete == null) {
-            System.out.println(title + " could not be found and therefore could not " +
-                    "be deleted.");
-        }
+//        Book toDelete = null;
+//        for (int i = 0; i < books.size(); i++) {
+//            if (books.get(i).getTitle().toLowerCase().equals(title.toLowerCase())) {
+//                toDelete = books.remove(i);
+//            }
+//
+//        }
+//        if (toDelete == null) {
+//            System.out.println(title + " could not be found and therefore could not " +
+//                    "be deleted.");
+//        }
     }
 
     public void userInfo() {
         System.out.println("Username: " + getUserName());
         System.out.println("The books " + getUserName() + "'s library include: ");
-        for (int i=0; i < books.size(); i++) {
-            System.out.println(" - " + books.get(i).getTitle() + ", by " + books.get(i).getAuthor());
-        }
+
+        //TODO
+//        for (int i=0; i < books.size(); i++) {
+//            System.out.println(" - " + books.get(i).getTitle() + ", by " + books.get(i).getAuthor());
+//        }
     }
 }

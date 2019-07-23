@@ -1,27 +1,26 @@
 import java.util.InputMismatchException;
 //import java.util.Random;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Book {
 
     // Instances
     private String title;
     private String author;
-    private int bookID;
+    private String bookISBN;
     private double cost;
-    private static int idNum = 0;
+//    private static int idNum = 0;
 
     // Constructor method
     public Book() {
         this.title = setTitle();
         this.author = setAuthor();
         this.cost = setCost();
-        this.bookID = setBookID();
+        this.bookISBN = setISBN();
 
         System.out.println("Your book is named " + this.title + ", written by " + this.author
-        + " and it costed $" + this.cost + ". \n The book's ID is: " + this.bookID);
-
-
+        + " and it costed $" + this.cost + ". \n The book's ID is: " + this.bookISBN);
     }
 
     public String getTitle(){
@@ -84,9 +83,24 @@ public class Book {
         return newCost;
     }
 
-    public int setBookID() {
-        idNum++;
-        return idNum;
+    public String getISBN() {
+        return this.bookISBN;
+    }
+
+    public String setISBN() {
+        System.out.println("Enter the ISBN of the book:");
+        Scanner scanner = new Scanner(System.in);
+        String isbn = scanner.nextLine().trim();
+        while (isbn.isEmpty()) {
+            System.out.println("You must enter an ISBN!");
+            isbn = scanner.nextLine().trim();
+        }
+        return isbn;
+
+//        UUID randomID = UUID.randomUUID();
+//        return randomID;
+////        idNum++;
+////        return idNum;
 
     }
 

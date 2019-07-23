@@ -66,14 +66,13 @@ public class Main {
                     break;
                 case "display":
                     user1.userInfo();
+                    SQLiteConnection.select();
                     break;
                 case "delete":
-                    System.out.println("What is the title of the book you want to remove?");
-                    String title = scanner.nextLine().trim();
-//                    System.out.println("Who is the author of the book?");
-//                    String author = scanner.nextLine().trim();
+                    System.out.println("What is the ISBN of the book you want to remove?");
+                    String isbn = scanner.nextLine().trim();
 
-                    user1.removeBook(title);
+                    user1.deleteBook(isbn);
                     user1.userInfo();
                     break;
                 case "exit":
@@ -87,6 +86,7 @@ public class Main {
             }
         }
 
+        SQLiteConnection.closeDBConnection();
         System.exit(-1);
 
 
