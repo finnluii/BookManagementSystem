@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.InputMismatchException;
 //import java.util.Random;
 import java.util.Scanner;
@@ -10,6 +11,8 @@ public class Book {
     private String author;
     private String bookISBN;
     private double cost;
+    private Date startDate;
+    private Date endDate;
 //    private static int idNum = 0;
 
     // Constructor method
@@ -18,6 +21,8 @@ public class Book {
         this.author = setAuthor();
         this.cost = setCost();
         this.bookISBN = setISBN();
+        this.startDate = setStartDate();
+        this.endDate = setEndDate();
 
         System.out.println("Your book is named " + this.title + ", written by " + this.author
         + " and it costed $" + this.cost + ". \n The book's ID is: " + this.bookISBN);
@@ -102,6 +107,22 @@ public class Book {
 ////        idNum++;
 ////        return idNum;
 
+    }
+
+    public Date getStartDate() {
+
+    }
+
+    public Date setStartDate() {
+
+    }
+
+    public Date getEndDate() {
+
+    }
+
+    public Date setEndDate() {
+        
     }
 
     public String showBookInfo() {

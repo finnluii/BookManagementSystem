@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 public class User {
@@ -8,7 +9,7 @@ public class User {
     private String userName;
     private int userID;
     private static int idNum = 0;
-//    private ArrayList<Book> books = new ArrayList<Book>();
+//    private List<Book> books = new ArrayList<Book>();
 
 
     // Constructor
@@ -62,15 +63,32 @@ public class User {
         return userName;
     }
 
+    public int setUserID() {
+        idNum++;
+        return idNum;
+    }
+
     public void addBook(Book book) {
 //        this.books.add(book);
         SQLiteConnection.insert(book.getISBN(), book.getTitle(), book.getAuthor(), book.getCost());
 
     }
 
-    public int setUserID() {
-        idNum++;
-        return idNum;
+    public void update(String column, String newValue) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("What is the column you want to edit?");
+
+        System.out.println("What is the value you want updated?");
+
+        System.out.println("What is the ISBN of the book you want to update?");
+
+        String isbn = scanner.nextLine().trim();
+        while (isbn.isEmpty()) {
+            System.out.print("Hmm, I don't see anything. Please try again: ");
+            isbn = scanner.nextLine().trim();
+        }
+        SQLiteConnection.update(isbn, column, newValue);
     }
 
     public void deleteBook(String isbn) {

@@ -83,12 +83,29 @@ public class SQLiteConnection {
             ResultSet rs = stmt.executeQuery(select_stmt);
 
             while (rs.next()) {
-                System.out.println(rs.getString("TITLE"));
+                double cost = rs.getInt("COST") / 100;
+                System.out.println("-" + rs.getString("TITLE") + " by " +
+                        rs.getString("AUTHOR") + " costed " + cost + ". ISBN: " + rs.getString("ISBN"));
             }
         } catch (SQLException e) {
             System.out.println("Error in SELECT query.");
             System.out.println(e.getMessage());
             System.exit(-1);
+        }
+    }
+
+    public static void update(String isbn, String column, String value) {
+        try {
+            String update_stmt = "UPDATE BOOK SET ? = ? WHERE ISBN = ?";
+            PreparedStatement pstmt = singleConnection.prepareStatement(update_stmt);
+            pstmt.setString(1, column);
+            pstmt.setString(2,value);
+            pstmt.setString(3, isbn);
+
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+
         }
     }
 

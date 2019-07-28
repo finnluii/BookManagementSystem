@@ -63,6 +63,7 @@ public class Main {
                     user1.addBook(newBook);
                     break;
                 case "update":
+                    user1.update("ISBN", "1.99");
                     break;
                 case "display":
                     user1.userInfo();
